@@ -92,3 +92,16 @@ ENV/
 # Rope project settings
 .ropeproject
 
+.DS_Store
+.idea/workspace.xml
+polls/__init__.pyc
+polls/urls.pyc
+polls/views.pyc
+static/.DS_Store
+static/datamodel/.DS_Store
+untitled/.DS_Store
+untitled/__init__.pyc
+untitled/infohandle.pyc
+untitled/settings.pyc
+untitled/urls.pyc
+untitled/wsgi.pyc
