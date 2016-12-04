@@ -11,6 +11,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.externals import joblib
 from django.core.files import File
 from time import clock
+import re
 
 
 # # 表单
@@ -67,6 +68,10 @@ def handle(request):
     context = {}
     if 'q' in request.GET:
         message = request.GET['q'].encode('utf-8')
+        raw_message = message
+        # 将所有数字替换成'x'
+        regex_cp = re.compile('\d')
+        message = re.sub(regex_cp,'x',message)
         # 加载模型
 
         # lr = joblib.load(BASE_DIR+'/static/datamodel/lr_model.m')
@@ -118,7 +123,7 @@ def handle(request):
         if predicted[0] == 1:
             res = '结果：垃圾短信'
         context['hello'] = res
-        context['pre_data'] = message
+        context['pre_data'] = raw_message
     else:
         context['hello'] = '请输入短信内容'
         context['pre_data']='空'
